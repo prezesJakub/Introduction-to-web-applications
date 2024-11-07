@@ -1,0 +1,230 @@
+* {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+}
+.navbar {
+    display: flex;
+    background-color: lightskyblue;
+    justify-content: center;
+    padding: 10px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.navbarList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.navbarList li {
+    margin: 0 20px;
+    font-size: 20px;
+}
+.navbarList a {
+    color: blueviolet;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10 15px;
+    transition: background-color 0.5s;
+}
+.navbarList a:hover {
+    background-color: lightgray;
+    border-radius: 5px;
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: sandybrown;
+    color: white;
+    padding: 10px;
+    font-size: 0.9em;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+}
+.authorPhoto img {
+    height: 150px;
+    width: auto;
+}
+.formularz {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: lightskyblue;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.formularz label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: black;
+}
+.formularz input[type="email"],
+.formularz select,
+.formularz textarea {
+    width: 590px;    
+    margin: 10px auto;
+    margin-top: 5px;
+    border-radius: 4px;
+    font-size:1em;
+    outline: none;
+}
+.formularz textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.formularz button {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto 0 auto;
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: black;
+    background-color: lightgray;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.formularz button:hover {
+    background-color: gray;
+}
+
+.invalidData {
+    border: 2px solid red;
+}
+.validData {
+    border: 1px solid gray;
+}
+.galeria {
+    margin-top: 5px;
+    padding: 5px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.galeria figure {
+    margin: 0;
+    text-align: center;
+}
+.galeria figcaption {
+    font-size: 0.9em;
+}
+.galeria img {
+    width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.galeria img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.videos {
+    margin-top: 5px;
+    padding: 5px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; 
+}
+.videos video {
+    width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.videos video:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.videos figure {
+    margin: 0;
+    text-align: center;
+}
+#videosHeader, #galeriaHeader {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+.clock {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: blueviolet;
+}
+#welcomeMessage {
+    text-align: center;
+}
+.section {
+    position: relative;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    color: black;
+    text-align: center;
+}
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    z-index: 0;
+}
+.history::before {
+    background-image: url('mainphotos/history.jpg');
+}
+.news::before {
+    background-image: url('mainphotos/stadler2.jpg');
+}
+.routes {
+    height: 700px;
+}
+.routes::before {
+    background-image: url('mainphotos/walcownia.jpg')
+}
+.map::before {
+    background-image: url('mainphotos/trammap.jpg');
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+.map {
+    position: relative;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    color: black;
+    text-align: center;
+    height: 950px;
+}
+.section h2, .section p {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    text-shadow: 
+        -1px -1px 0 white, 
+        1px -1px 0 white,   
+        -1px 1px 0 white,  
+        1px 1px 0 white;
+}
