@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kontakt</title>
+        <link rel="stylesheet" href="./style.css">
+        <script src="validation.js" defer></script>
+        <script src="clock.js" defer></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+        <nav class="navbar"> 
+            <ul class="navbarList">
+                <li><a class="link link1" href="index.html"><b>Home</b></a></li>
+                <li><a class="link link2" href="kontakt.html"><b>Kontakt</b></a></li>
+                <li><a class="link link3" href="galeria.html"><b>Galeria</b></a></li>
+            </ul>
+            <div class="clock" id="clock"></div>
+        </nav>
+        <main>
+        <form class="formularz" id="formularz" action="#" method="post" novalidate>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" class="validData" name="email" placeholder="Twój adres e-mail" required>
+            <label for="temat">Temat wiadomości:</label>
+            <select id="temat" name="temat" required>
+                <option value="pytanie">Pytanie</option>
+                <option value="skarga">Skarga</option>
+                <option value="opinia">Opinia</option>
+            </select>
+            <label for="wiadomosc">Wiadomość:</label>
+            <textarea id="wiadomosc" class="validData" name="wiadomosc" placeholder="Treść wiadomości" minlength="10" required></textarea>
+            <button type="submit">Wyślij</button>
+        </form>
+        </main>
+        <footer class="footer">
+            <div class="authorPhoto">
+                <img src="https://apps.usos.agh.edu.pl/res/up/200x250/124449-m-f2a8058f5937a0f68c9608ec117645e78c9d344ff03b78598a147437413f14de.jpg">
+            </div>
+            <div class="footerDescription">
+                <p><b>Jakub Zając</b></p>
+                <p>Człowiek wielu talentów. Urodzony w Krakowie.</p>
+                <p>Strona powstała w ramach projektu na WDAI w 2024 roku.</p>
+            </div>
+             </footer>
+
+    </body>
+    
+</html>
