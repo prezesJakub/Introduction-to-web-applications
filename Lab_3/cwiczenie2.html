@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Generator haseł</title>
+        <script src="passwordGenerator.js" defer></script>
+        <style>
+            body {
+                font-family: Arial;
+                margin: 50px auto;
+                max-width: 400px;
+                text-align: center;
+            }
+            .container label {
+                display: block;
+                margin: 10px 0;
+            }
+            .container input[type="number"] {
+                width: 100%;
+                padding: 8px;
+                margin: 5px 0 15px;
+                font-size: 1rem;
+            }
+            .container input[type="checkbox"] {
+                margin-right: 5px;
+            }
+            .container button {
+                padding: 10px 20px;
+                font-size: 1rem;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Generator haseł</h1>
+        <div class="container">
+            <form id="passwordGenerator">
+                <label>
+                    Minimalna długość hasła:
+                    <input type="number" id="minLength" placeholder="minimalna długość hasła" min="1" step="1" required>
+                </label>
+                <label>
+                    Maksymalna długość hasła:
+                    <input type="number" id="maxLength" placeholder="maksymalna długość hasła" min="1" step="1" required>
+                </label>
+                <label>
+                    <input type="checkbox" id="includeUpperCase">
+                    Czy hasło ma zawierać wielkie litery?
+                </label>
+                <label>
+                    <input type="checkbox" id="includeSpecialChar">
+                    Czy hasło ma zawierać znaki specjalne?
+                </label>
+                <button type="button" id="generatePassword">Wygeneruj hasło</button>
+            </form>
+        </div>
+    </body>
+</html>

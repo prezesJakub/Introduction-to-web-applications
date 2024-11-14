@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Produkty</title>
+        <script src="productList.js" defer></script>
+        <style>
+            .container table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            .container th, .container td {
+                border: 1px solid gray;
+                padding: 8px;
+                text-align: center;
+            }
+            .container th {
+                background-color: lightgray;
+            }
+            .container img {
+                max-width: 100px;
+            }
+            .controls {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            .controls input, .controls select {
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Produkty</h1>
+        <div class="container">
+            <div class="controls">
+                <input type="text" id="searchInput" placeholder="Filtruj po tytule">
+                <select id="sortSelect">
+                    <option value="original">Oryginalna kolejność</option>
+                    <option value="ascending">Sortuj rosnąco</option>
+                    <option value="descending">Sortuj malejąco</option>
+                </select>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Zdjęcie</th>
+                        <th>Tytuł</th>
+                        <th>Opis</th>
+                    </tr>
+                </thead>
+                <tbody id="dataTable">
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
