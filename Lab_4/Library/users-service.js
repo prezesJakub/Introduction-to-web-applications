@@ -1,5 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const sequelize = require('./models/database');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const authenticateJWT = require('./middlewares/auth');
+const validator = require('validator');
+
+const Book = require('./models/Book');
+const Order = require('./models/Order');
+const User = require('./models/User');
 
 const app = express();
 app.use(bodyParser.json());
@@ -8,112 +17,13 @@ app.get('/', (req, res) => {
     res.send('Witaj w naszej księgarni!');
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Serwer działa na http://localhost:${PORT}`);
-});
-
-const sequelize = require('./models/database');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const authenticateJWT = require('./middlewares/auth');
-const validator = require('validator');
-
 sequelize.authenticate()
-    .then(() => console.log('Połączono z SQLite'))
-    .catch((err) => console.error('Błąd połączenia z bazą danych ', err));
-
-const Book = require('./models/Book');
-const Order = require('./models/Order');
-const User = require('./models/User');
+    .then(() => console.log('Połączono z SQLite (Użytkownicy)'))
+    .catch((err) => console.error('Błąd połączenia z bazą danych (Użytkownicy)', err));
 
 sequelize.sync({force: false})
-    .then(() => console.log('Zsynchronizowano bazę danych'))
-    .catch((err) => console.error('Błąd synchronizacji ', err));
-
-app.get('/api/books', async (req, res) => {
-    const books = await Book.findAll();
-    res.json(books);
-});
-
-app.get('/api/books/:id', async (req, res) => {
-    const book = await Book.findByPk(req.params.id);
-    if (book) {
-        res.json(book);
-    } else {
-        res.status(404).send('Nie znaleziono książki');
-    }
-});
-
-app.post('/api/books', async (req, res) => {
-    const { title, author, year } = req.body;
-    const newBook = await Book.create({ title, author, year });
-    res.json(`Dodano nową książkę o id: ${newBook.id }`);
-});
-
-app.delete('/api/books/:id', async (req, res) => {
-    const result = await Book.destroy({ where: {id: req.params.id} });
-    if (result) {
-        res.send('Usunięto książkę');
-    } else {
-        res.status(404).send('Nie znaleziono książki');
-    }
-});
-
-app.get('/api/orders/:userId', async (req, res) => {
-    const { userId } = req.params;
-    const orders = await Order.findAll({
-        where: { userId },
-        include: Book,
-    });
-    res.json(orders);
-});
-
-app.post('/api/orders', async (req, res) => {
-    const {userId, bookId, quantity} = req.body;
-
-    const book = await Book.findByPk(bookId);
-    if (!book) {
-        return res.status(404).json({ error: 'Książka o podanym ID nie istnieje' });
-    }
-
-    const newOrder = await Order.create({userId, bookId, quantity});
-    res.json(`Dodano nowe zamówienie o id: ${newOrder.id}`);
-});
-
-app.delete('/api/orders/:orderId', async (req, res) => {
-    const { orderId } = req.params;
-
-    const result = await Order.destroy({where: {id: orderId} });
-    if (result) {
-        res.json('Usunięto zamówienie');
-    } else {
-        res.status(404).send('Nie znaleziono zamówienia');
-    }
-});
-
-app.patch('/api/orders/:orderId', async (req, res) => {
-    const { orderId } = req.params;
-    const { userId, bookId, quantity } = req.body;
-
-    const order = await Order.findByPk(orderId);
-    if (!order) {
-        return res.status(404).json({ error: 'Zamówienie o podanym ID nie istnieje' });
-    }
-
-    if(userId !== undefined) order.userId = userId;
-    if(bookId !== undefined) {
-        const bookExists = await Book.findByPk(bookId);
-        if(!bookExists) {
-            return res.status(404).json({ error: 'Książka o podanym ID nie istnieje' });
-        }
-        order.bookId = bookId;
-    }
-    if(quantity !== undefined) order.quantity = quantity;
-
-    await order.save();
-    res.json({ message: 'Zamówienie zaktualizowane', order });
-});
+    .then(() => console.log('Zsynchronizowano bazę danych (Użytkownicy)'))
+    .catch((err) => console.error('Błąd synchronizacji (Użytkownicy)', err));
 
 app.post('/api/register', async (req, res) => {
     const { email, password } = req.body;
@@ -217,4 +127,9 @@ app.get('/api/users/:userId', authenticateJWT, async (req, res) => {
     } else {
         res.status(404).json({ error: 'Nie znaleziono użytkownika' });
     }
+});
+
+const PORT = 3003;
+app.listen(PORT, () => {
+    console.log(`Serwer obsługi użytkowników działa na http://localhost:${PORT}`);
 });
