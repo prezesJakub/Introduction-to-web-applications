@@ -4,6 +4,7 @@ const sequelize = require('./models/database');
 
 const Book = require('./models/Book');
 const Order = require('./models/Order');
+const User = require('./models/User')
 
 const app = express();
 app.use(bodyParser.json());
@@ -36,6 +37,10 @@ app.post('/api/orders', async (req, res) => {
     if (!book) {
         return res.status(404).json({ error: 'Książka o podanym ID nie istnieje' });
     }
+    const user = await User.findByPk(userId);
+    if (!user) {
+        return res.status(404).json({ error: 'Użytkownik o podanym ID nie istnieje' });
+    }
 
     const newOrder = await Order.create({userId, bookId, quantity});
     res.json(`Dodano nowe zamówienie o id: ${newOrder.id}`);
@@ -61,7 +66,13 @@ app.patch('/api/orders/:orderId', async (req, res) => {
         return res.status(404).json({ error: 'Zamówienie o podanym ID nie istnieje' });
     }
 
-    if(userId !== undefined) order.userId = userId;
+    if(userId !== undefined) {
+        const userExists = await User.findByPk(userId);
+        if (!userExists) {
+            return res.status(404).json({ error: 'Użytkownik o podanym ID nie istnieje' });
+        }
+        order.userId = userId;
+    }
     if(bookId !== undefined) {
         const bookExists = await Book.findByPk(bookId);
         if(!bookExists) {
