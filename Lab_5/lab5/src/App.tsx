@@ -8,6 +8,8 @@ import Haslo from "./components/formularze/Haslo";
 import Logowanie from "./components/formularze/Logowanie";
 import Ternary from "./components/inne/Ternary";
 import Aktualizacja from "./components/inne/Aktualizacja";
+import Studenci from "./components/studenci/Studenci";
+import StudentManager from "./components/studenci/StudentManager";
 import "./index.css";
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
       <Logowanie />
       <Ternary />
       <Aktualizacja />
+      <Studenci />
+      <StudentManager />
     </div>
   );
 }
