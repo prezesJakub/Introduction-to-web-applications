@@ -13,6 +13,8 @@ import StudentManager from "./components/studenci/StudentManager";
 import Licznik2 from "./components/efekty/Licznik";
 import Tytul from "./components/efekty/Tytul";
 import Odliczanie from "./components/efekty/Odliczanie";
+import Komentarz from "./components/produkty/Komentarz";
+import Komentarze from "./components/produkty/Komentarze";
 import "./index.css";
 
 function App() {
@@ -33,6 +35,22 @@ function App() {
       <Licznik2 />
       <Tytul />
       <Odliczanie />
+      <div>
+        <h2>Komentarz</h2>
+        <Komentarz 
+          id={1}
+          body="Witam wszystkich i pozdrawiam serdecznie!"
+          postId={100}
+          likes={5}
+          user={{
+            id: 1,
+            username: "SuperJanek2005",
+            fullName: "Jan Nowak"
+          }}
+        />
+      </div>
+      
+      <Komentarze />
     </div>
   );
 }
