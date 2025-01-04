@@ -1,0 +1,48 @@
+.komentarz {
+    border: 1px solid lightgray; 
+    border-radius: 8px; 
+    padding: 16px; 
+    margin: 16px 0; 
+    background-color: #f9f9f9;
+}
+.komentarz-header {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.komentarz-body {
+    margin-bottom: 8px;
+}
+.komentarz-info {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+.komentarz-interactions {
+    display: flex; 
+    align-items: center; 
+    margin-top: 8px;
+}
+.komentarz-button {
+    margin-right: 8px; 
+    padding: 8px;
+    color: white;
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer;
+}
+.like-button {
+    background-color: #4CAF50;
+}
+.dislike-button {
+    background-color: #f44336;
+}
+.komentarz-likes-count {
+    margin-left: 16px;
+}
+.komentarze {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
