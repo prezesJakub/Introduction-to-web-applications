@@ -1,0 +1,28 @@
+.shape {
+    display: inline-block;
+    margin: 10px;
+    transition: transform 0.5s;
+}
+  
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
+  
+.rectangle {
+    width: 150px;
+    height: 80px;
+    background-color: red;
+}
+  
+.circle {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    border-radius: 50%;
+}
+  
+.shape.animate {
+    transform: scale(0.5);
+}
